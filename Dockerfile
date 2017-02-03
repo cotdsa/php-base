@@ -50,7 +50,7 @@ RUN set -xe && \
     git clone --branch php7 https://github.com/php-memcached-dev/php-memcached /usr/src/php/ext/memcached && \
     echo "memcached" >> /usr/src/php-available-exts && \
     docker-php-ext-configure memcached && \
-    docker-php-ext-install zip pdo pdo_mysql gd opcache mbstring bcmath intl pcntl memcached soap && \
+    docker-php-ext-install zip pdo pdo_mysql gd opcache mbstring bcmath intl pcntl memcached soap shmop && \
     pecl install apcu && \
     echo extension=apcu.so > /usr/local/etc/php/conf.d/apcu.ini && \
     pecl install -o redis && \
@@ -87,4 +87,6 @@ RUN set -xe && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     true
 
-COPY config/opcache.ini config/config.ini /usr/local/etc/php/conf.d/
+COPY opcache.ini config.ini /usr/local/etc/php/conf.d/
+
+WORKDIR /app
