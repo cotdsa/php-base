@@ -100,6 +100,11 @@ RUN set -xe && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     true
 
+RUN set -xe && \
+    curl -sSL https://github.com/jwilder/dockerize/releases/download/v0.2.0/dockerize-linux-amd64-v0.2.0.tar.gz | \
+        tar -C /usr/local/bin -xzv && \
+    true
+
 COPY opcache.ini config.ini /usr/local/etc/php/conf.d/
 
 WORKDIR /app
