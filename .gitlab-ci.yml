@@ -2,6 +2,11 @@ image: docker:latest
 
 services:
   - docker:dind
+
+stages:
+  - build
+  - tag
+
 build:
   stage: build
   script:
@@ -9,3 +14,12 @@ build:
     - docker build --pull --cache-from "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME" -t "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME"
 
+alias_master_latest:
+  stage: tag
+  script:
+    - docker login -u "gitlab-ci-token" -p "$CI_BUILD_TOKEN" $CI_REGISTRY
+    - docker pull "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME"
+    - docker tag "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME" "$CI_REGISTRY_IMAGE:latest"
+    - docker push "$CI_REGISTRY_IMAGE:latest"
+  only:
+    - master
