@@ -105,6 +105,11 @@ RUN set -xe && \
         tar -C /usr/local/bin -xzv && \
     true
 
+RUN set -xe && \
+    npm install -g uglify-js uglifycss && \
+    ln -s /usr/bin/uglify* /usr/local/bin/ && \
+    true
+
 COPY opcache.ini config.ini /usr/local/etc/php/conf.d/
 
 WORKDIR /app
