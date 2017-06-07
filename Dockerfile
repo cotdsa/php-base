@@ -106,8 +106,10 @@ RUN set -xe && \
     true
 
 RUN set -xe && \
-    npm install -g uglify-js uglifycss && \
+    npm install -g uglify-js uglifycss yarn && \
     ln -s /usr/bin/uglify* /usr/local/bin/ && \
+    npm cache clean && \
+    rm -rf /tmp/* && \
     true
 
 COPY opcache.ini config.ini /usr/local/etc/php/conf.d/
