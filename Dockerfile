@@ -127,7 +127,9 @@ RUN set -xe && \
     apt-get -qq install --no-install-recommends \
         ruby-compass \
         python \
+        python-pip \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* && \
+    pip install pyyaml && \
     true
