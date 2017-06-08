@@ -122,4 +122,11 @@ RUN set -xe && \
 
 COPY opcache.ini config.ini /usr/local/etc/php/conf.d/
 
-WORKDIR /app
+RUN set -xe && \
+    apt-get -qq update && \
+    apt-get -qq install --no-install-recommends \
+        ruby-compass \
+        && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* && \
+    true
