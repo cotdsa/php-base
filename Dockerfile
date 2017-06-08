@@ -126,6 +126,7 @@ RUN set -xe && \
     apt-get -qq update && \
     apt-get -qq install --no-install-recommends \
         ruby-compass \
+        python \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* && \
