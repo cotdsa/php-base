@@ -65,11 +65,13 @@ RUN set -xe && \
         shmop \
         && \
     pecl install apcu && \
-    echo extension=apcu.so > /usr/local/etc/php/conf.d/apcu.ini && \
+    echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini && \
     pecl install -o redis && \
     echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini && \
     pecl install -o imagick && \
     echo "extension=imagick.so" > /usr/local/etc/php/conf.d/imagick.ini && \
+    pecl install -o ds && \
+    echo "extension=ds.so" > /usr/local/etc/php/conf.d/ds.ini && \
     rm -rf /tmp/pear && \
     apt-get purge -qq --auto-remove \
         -o APT::AutoRemove::RecommendsImportant=false \
