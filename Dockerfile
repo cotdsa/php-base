@@ -30,4 +30,5 @@ RUN set -xe && \
         ruby-dev make && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* && \
+    ln -s /usr/local/bin/compass /usr/bin/compass && \
     true
