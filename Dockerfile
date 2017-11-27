@@ -11,7 +11,7 @@ RUN set -xe && \
         apt-transport-https \
         --no-install-recommends && \
     curl -sL 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key' | apt-key add - && \
-    echo 'deb https://deb.nodesource.com/node_7.x jessie main' > /etc/apt/sources.list.d/nodesource.list && \
+    echo 'deb https://deb.nodesource.com/node_8.x jessie main' > /etc/apt/sources.list.d/nodesource.list && \
     apt-get -qq update && \
     apt-get -qq install nodejs --no-install-recommends && \
     apt-get purge -qq --auto-remove \
