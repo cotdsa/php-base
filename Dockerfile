@@ -119,7 +119,7 @@ RUN set -xe && \
 RUN set -xe && \
     npm install -g uglify-js uglifycss yarn && \
     ln -s /usr/bin/uglify* /usr/local/bin/ && \
-    npm cache clean && \
+    npm cache verify && \
     rm -rf /tmp/* && \
     true
 
